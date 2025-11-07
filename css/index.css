@@ -1,0 +1,150 @@
+:root {
+	--amarillo: #e4b302;
+	--amarillo-dark: #e4b302cc;
+	--celeste: #158fa2;
+	--naranja: #de4f3a;
+	--bordo: #722731;
+	--rosa: #bd1b43;
+	--rosa-dark: #bd1b43cc;
+	--negro: #1f1f1f;
+	--blanco: #efefef;
+	font-size: 16px;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+}
+
+body {
+	background: var(--blanco);
+	font-family: "Indie Flower", system-ui, sans-serif;
+	min-width: 320px;
+	width: 100%;
+	max-width: 1024px;
+	margin: 0 auto;
+	color: var(--blanco);
+}
+
+header {
+	background: var(--amarillo);
+	box-shadow: 0 1px 5px var(--amarillo);
+	padding: 1rem .5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+header > h1 {
+	align-self: flex-start;
+	font-size: 1.5rem;
+}
+
+header > .icons {
+	justify-self: flex-end;
+	}
+
+.logo {
+	width: 60px;
+	border-radius: 0;
+	border: 1px solid var(--celeste);
+	box-shadow: 0 0 6px var(--celeste);
+}
+
+main {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	place-content: center;
+	place-items: center;
+	padding: 1rem;
+	row-gap: 1rem;
+	column-gap: .5rem;
+	margin: 1rem 0;
+}
+
+article {
+	width: 150px;
+	border-radius: 10px;
+	border: 1px solid var(--celeste);
+	box-shadow: 0 0 6px var(--celeste);
+	overflow: hidden;
+}
+
+
+svg {
+	fill: var(--negro);
+	width: 40px;
+	height: 40px;
+	margin: .3rem .5rem;
+	cursor: pointer;	
+	transition: scale ease .3s;
+}
+svg:hover {
+	scale: 1.03;
+}
+
+
+.fasters {
+	background: var(--rosa);
+	margin: 1rem;
+	padding: 1rem;
+	box-shadow: 0 0 6px var(--naranja);
+}
+
+ul {
+	list-style: none;
+}
+
+.hide {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+}
+
+body.dark {
+	background: var(--negro);
+	color: var(--negro);
+}
+
+body.dark header {
+	background: var(--amarillo-dark);
+}
+
+body.dark svg {
+	fill: var(--blanco);
+}
+
+body.dark .fasters {
+	background: var(--rosa-dark);
+}
+
+body.dark img {
+	filter: brightness(75%);
+}
+
+@media screen and (min-width: 500px) {
+	:root {
+		font-size: 17px;
+	}
+
+	main {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+}
+
+@media screen and (min-width: 900px) {
+	:root {
+		font-size: 18px;
+	}
+
+	main {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
