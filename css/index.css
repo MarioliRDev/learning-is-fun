@@ -3,7 +3,9 @@
 	--amarillo-dark: #e4b302cc;
 	--celeste: #158fa2;
 	--naranja: #de4f3a;
+	--naranja-dark: #de4f3acc;
 	--bordo: #722731;
+	--bordo-dark: #722731cc;
 	--rosa: #bd1b43;
 	--rosa-dark: #bd1b43cc;
 	--negro: #1f1f1f;
@@ -43,7 +45,7 @@ header {
 
 header > h1 {
 	align-self: flex-start;
-	font-size: 1.5rem;
+	font-size: 1.8rem;
 }
 
 header > .icons {
@@ -97,8 +99,24 @@ svg:hover {
 	box-shadow: 0 0 6px var(--naranja);
 }
 
+h2 {
+	font-size: 1.5rem;
+	/*border-bottom: 3px solid var(--negro);*/
+	padding-bottom: 6px;
+	text-decoration: underline solid var(--blanco) 3px;
+}
+
 ul {
-	list-style: none;
+	list-style: disc;
+	padding: 6px 0 0 15px;
+}
+
+li {
+	font-size: 1.5rem;
+	padding: 6px;
+	margin-bottom: 12px;
+	background: var(--bordo);
+	border-radius: 6px;
 }
 
 .hide {
@@ -122,6 +140,14 @@ body.dark svg {
 
 body.dark .fasters {
 	background: var(--rosa-dark);
+}
+
+body.dark .fasters h2 {
+	text-decoration-color: var(--negro);
+}
+
+body.dark .fasters ul li {
+	background: var(--bordo-dark);
 }
 
 body.dark img {

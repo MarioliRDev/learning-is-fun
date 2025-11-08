@@ -24,25 +24,7 @@
 	</header>
 
 	<section class="fasters">
-		<h2>
-			Titulo y autor
-		</h2>
-		<ul>
-			<li>Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Culpa in repellendus omnis corrupti veritatis quo magni non itaque soluta ullam, sapiente illum nobis tenetur necessitatibus assumenda optio asperiores ipsam, sunt!</li>
-			<li>Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Sed magnam delectus nihil ut rerum excepturi nemo, atque amet quisquam facilis praesentium cupiditate dolore iure optio ullam eligendi deserunt architecto officiis!</li>
-			<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure eum doloremque id facilis amet quae a accusantium ratione consequatur facere. Quae delectus quo aliquid sapiente. Tempore quis ratione quae culpa.
-			</li>
-			<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure eum doloremque id facilis amet quae a accusantium ratione consequatur facere. Quae delectus quo aliquid sapiente. Tempore quis ratione quae culpa.
-			</li>
-			<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure eum doloremque id facilis amet quae a accusantium ratione consequatur facere. Quae delectus quo aliquid sapiente. Tempore quis ratione quae culpa.
-			</li>
-			<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure eum doloremque id facilis amet quae a accusantium ratione consequatur facere. Quae delectus quo aliquid sapiente. Tempore quis ratione quae culpa.
-			</li>
-			<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure eum doloremque id facilis amet quae a accusantium ratione consequatur facere. Quae delectus quo aliquid sapiente. Tempore quis ratione quae culpa.
-			</li>
-			<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure eum doloremque id facilis amet quae a accusantium ratione consequatur facere. Quae delectus quo aliquid sapiente. Tempore quis ratione quae culpa.
-			</li>
-		</ul>
+
 	</section>
 	<main>
 		<article>
@@ -153,7 +135,6 @@
 	</main>
 
 	<script>
-		fillFasters();
 		const el = el => document.querySelector(el);
 		const els = els => document.querySelectorAll(els);
 
@@ -162,6 +143,9 @@
 
 		const body = document.body;
 		const logo = el(".logo");
+		const fasters = el(".fasters");
+		
+		fillFasters();
 
 		if (localStorage.getItem("mode") === "dark") turnDark();
 
@@ -192,12 +176,32 @@
 
 		async function fillFasters () {
 			try {
-				await fetch("fasters.json").then(data => data.json()).then(res => {
-					console.log(res)
-				})
+				await fetch("fasters.json").then(data => data.json()).then(data => makeFasters(data))
 			} catch(e) {
 				console.log(e);
 			}
+		}
+
+		function makeFasters (data) {
+			const fragment = document.createDocumentFragment();
+			const tituloYAutor = document.createElement("H2");
+			const textoTYA = document.createTextNode(`${data[0].nombre} - ${data[0].autor}`);
+			tituloYAutor.appendChild(textoTYA);
+
+			const fastersUl = document.createElement("UL");
+
+			data[0].fasters.forEach(faster => {
+				let fasterLi = document.createElement("LI");
+				let textoFastersLi = document.createTextNode(faster);
+
+				fasterLi.appendChild(textoFastersLi);
+				fastersUl.appendChild(fasterLi);
+			})
+
+			fragment.appendChild(tituloYAutor);
+			fragment.appendChild(fastersUl);
+			fasters.appendChild(fragment)
+
 		}
 	</script>
 
