@@ -52,8 +52,8 @@ header > div {
 
 svg {
 	cursor: pointer;
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	fill: var(--negro);
 	margin: .3rem .9rem .3rem 0;
 
