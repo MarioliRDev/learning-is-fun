@@ -3,3 +3,4 @@
 node_modules
 covers/node_modules
 *.png
+!fasters.json

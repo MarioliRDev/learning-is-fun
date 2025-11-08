@@ -153,7 +153,7 @@
 	</main>
 
 	<script>
-		
+		fillFasters();
 		const el = el => document.querySelector(el);
 		const els = els => document.querySelectorAll(els);
 
@@ -189,6 +189,16 @@
 	    localStorage.setItem("mode", "dark")
 		}
 
+
+		async function fillFasters () {
+			try {
+				await fetch("fasters.json").then(data => data.json()).then(res => {
+					console.log(res)
+				})
+			} catch(e) {
+				console.log(e);
+			}
+		}
 	</script>
 
 </body>
